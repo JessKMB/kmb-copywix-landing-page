@@ -1,0 +1,19 @@
+---
+import BotonQr from "../../organisms/boton-qr/BotonQr.astro";
+import Presentation from "../../organisms/presentation/Presentation.astro";
+import Contact from "../../organisms/contact/Contact.astro"
+import Clients from "../../organisms/clients/Clients.astro";
+import News from "../../organisms/news/News.astro"
+import { BOTON_QR_TEXT, CONTACT_TEXT, NEWS_TEXT, CONTACT_CENTER_TEXT, CLIENTS_TEXT } from "./Home.text"
+import ContactCenter from "../../organisms/contactCenter/ContactCenter.astro";
+import Cta from "../../organisms/cta/Cta.astro";
+---
+<div>
+    <Presentation/>
+    <BotonQr text={BOTON_QR_TEXT}/>
+    <News text={NEWS_TEXT}/>
+    <ContactCenter text={CONTACT_CENTER_TEXT}/>
+    <Cta/>
+    <Clients text={CLIENTS_TEXT}/>
+    <Contact text={CONTACT_TEXT}/>
+</div>

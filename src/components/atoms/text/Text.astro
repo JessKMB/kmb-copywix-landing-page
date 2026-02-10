@@ -1,0 +1,16 @@
+---
+import type { Colors } from '../../../utils/interfaces/text-color.interfaces';
+import type { Sizes } from '../../../utils/interfaces/text-size.interfaces';
+
+
+interface Props {
+    color: Colors;
+    size?: Sizes;
+}
+
+const { color, size = "md" } = Astro.props;
+---
+
+<p class={`${color} ${size}`}>
+    <slot />
+</p>

@@ -1,0 +1,36 @@
+---
+import type { Sizes } from "../../../utils/interfaces/text-size.interfaces";
+import type { Colors } from "../../../utils/interfaces/text-color.interfaces";
+
+interface Props {
+    level: 1 | 2 | 3 | 4 | 5 | 6;
+    color: Colors;
+    size?: Sizes;
+    weight?: number
+    spacing?: string
+}
+
+const { level, color, size, weight, spacing } = Astro.props;
+
+const Tag = (`h${level}`) as keyof HTMLElementTagNameMap;
+
+const DEFAULT_SIZE: Record<1 | 2 | 3 | 4 | 5 | 6, Sizes> = {
+    1: "xxxxl",
+    2: "xxxl",
+    3: "xxl",
+    4: "xl",
+    5: "lg",
+    6: "md",
+};
+---
+
+<Tag class={`title ${color} ${size ?? DEFAULT_SIZE[level]}`} style={{fontWeight:weight, letterSpacing:spacing}}>
+    <slot />
+</Tag>
+
+<style>
+    .title {
+        margin: 0;
+        line-height: 1.2;
+    }
+</style>

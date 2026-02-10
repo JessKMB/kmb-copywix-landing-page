@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets'
+import Anchor from "../../atoms/anchor/Anchor.astro";
+import ctaImage from "../../../assets/cta/contactCenter.png"
+---
+
+<section class="cta">
+    <div class="cta__text-container">
+        <h3 class="cta__title xxxxxxl white">TU CONTACT CENTER OMNICANAL EN 3 PASOS</h3>
+        <h4 class="cta__subtitle xxxl gray">Atiende socios por llamadas, WhatsApp, chat, email y bots. Entra, elige lo que necesitas y obtén tu plan inmediato.</h4>
+        <a href="/simulador">Comienza ahora</a>
+    </div>
+    <div class="cta__img-container">
+        <Image src={ctaImage} alt={"Imagen headsets"}/>
+    </div>
+</section>
+
+
+<style>
+    .cta {
+    padding: 120px 80px;
+    width: 100dvw;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    background: black;
+    position: relative;
+    overflow: hidden;
+    }
+
+
+    .cta__text-container a {
+        display: inline-block;
+        padding: 16px 40px;
+        font-size: 1.25rem;
+        font-weight: bold;
+        border-radius: 12px;
+        color: #fff;
+        text-decoration: none;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(270deg, #184b90, #136ce2, #58c0ff);
+        background-size: 400% 400%;
+        animation: gradientMove 6s ease infinite;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .cta__text-container a:hover {
+        transform: translateY(-4px) scale(1.05);
+    }
+
+    @keyframes float {
+    from { transform: translateY(0px); }
+    to { transform: translateY(40px); }
+    }
+
+    .cta__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex: 1;
+    z-index: 1;
+    }
+
+    .cta__title {
+    background: linear-gradient(90deg, #136ce2 0%, #58c0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    }
+
+    .cta__subtitle {
+    max-width: 600px;
+    line-height: 1.5;
+    opacity: 0.9;
+    }
+
+    .cta__img-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    }
+
+    .cta__img-container img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        transition: transform 0.4s ease;
+    }
+
+    .cta__img-container img:hover {
+    transform: scale(1.05) rotate(-1deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+    .cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 100px 40px;
+    }
+    .cta__text-container {
+        align-items: center;
+        text-align: center;
+    }
+    }
+
+</style>

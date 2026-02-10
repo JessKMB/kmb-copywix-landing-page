@@ -1,0 +1,47 @@
+---
+interface Props {
+    orientation?: 'horizontal' | 'vertical';
+    color?: 'white' | 'black';
+    length?: string;
+    thickness?: string;
+    className?: string;
+    fullHeight?: boolean; 
+}
+
+const {
+    orientation = 'horizontal',
+    color = 'black',
+    length = orientation === 'horizontal' ? '100%' : '24px',
+    thickness = '1px',
+    className = '',
+    fullHeight = false 
+} = Astro.props;
+
+const isVertical = orientation === 'vertical';
+const backgroundColor = color === 'white' ? '#ffffff' : '#000000';
+
+let dividerStyles = {
+    display: 'block',
+    backgroundColor,
+    height: isVertical ? length : thickness,
+    width: isVertical ? thickness : length,
+    margin: isVertical ? 'auto 0.5rem' : '0.5rem auto'
+};
+
+const additionalStyles = isVertical && fullHeight
+    ? `position: relative; align-self: stretch; height: auto;`
+    : '';
+---
+
+<div
+    class={`divider ${className}`}
+    style={`
+        display: ${dividerStyles.display};
+        background-color: ${dividerStyles.backgroundColor};
+        ${!fullHeight ? `height: ${dividerStyles.height};` : ''}
+        width: ${dividerStyles.width};
+        margin: ${dividerStyles.margin};
+        ${additionalStyles}
+    `}
+>
+</div>

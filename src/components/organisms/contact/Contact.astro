@@ -1,0 +1,142 @@
+---
+import Image from "astro/components/Image.astro";
+import PresentationLetters from "../../../assets/presentation/presentation-letters.png"
+import type { ContactText } from "../../pages/home/Home.text";
+import Title from "../../atoms/title/Title.astro";
+import Text from "../../atoms/text/Text.astro";
+
+interface Props{
+    text: ContactText
+}
+
+const { text } = Astro.props
+---
+
+<section class="contact" id="Contacto">
+
+    <div class="contact__information">
+        <div class="contact__information__content">
+            <div class="information">
+                <Title level={2} color="white">{text.title}</Title>
+                <div class="contact__information__content__child">
+                    <Title color="white" level={3}>{text.address.title}</Title>
+                    <ul>
+                        {
+                            text.address.content.map((li) => (
+                                <li>
+                                    <Text color="white" set:html={li} size="xl"></Text>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div class="contact__information__content__child">
+                    <Title color="white" level={3}>{text.phone.title}</Title>
+                    <ul>
+                        {
+                            text.phone.content.map((li) => (
+                                <li>
+                                    <Text color="white" set:html={li} size="xl"></Text>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div class="contact__information__content__child">
+                    <Title color="white" level={3}>{text.email.title}</Title>
+                    <ul>
+                        {
+                            text.email.content.map((li) => (
+                                <li>
+                                    <Text color="white" set:html={li} size="xl"></Text>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact__logo">
+        <Image src={PresentationLetters} alt={"Logo de kimobill"}/>
+    </div> 
+
+
+</section>
+
+<style>
+    .contact{
+        padding: 100px 0px;
+        display: flex;
+        flex-wrap: wrap;
+        background-image: url("../../../assets/presentation/presentation-background.webp");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .contact__information{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 30px;
+        width: 100%;
+        min-width: none;
+    }
+    .contact__information__content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background-color: var(--color-black);
+        border-radius: 10px;
+        padding: 30px;
+        width: 100%;
+        max-width: 500px;
+        min-width: none;
+    }
+
+    .information{
+        width: 100%;
+        min-width: none;
+        border-left: 2px solid var(--color-white);
+        padding: 20px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .contact__information__content__child{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+    }
+    .contact__logo{
+        padding: 0px 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contact__logo img{
+        width: 100%;
+        min-width: none;
+        max-width: 600px;
+        height: auto;
+        object-fit: cover;
+    }
+
+    @media (max-width: 860px) {
+        .contact{
+            flex-direction: column-reverse;
+        }
+        .contact__logo{
+            flex: .2
+        }
+    }
+</style>
+

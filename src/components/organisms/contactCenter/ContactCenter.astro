@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets'
+import Title from '../../atoms/title/Title.astro'
+import type { BotonQrText } from '../../pages/home/Home.text'
+import Text from '../../atoms/text/Text.astro'
+import Anchor from '../../atoms/anchor/Anchor.astro'
+import ContactCenterImg from "../../../assets/contact-center/contact-center.webp"
+
+interface Props{
+    text:BotonQrText
+}
+
+const {text} = Astro.props
+const {title, list, cta } = text 
+---
+
+<section class="contact-center" id="ContactCenter">
+    <div class="contact-center__child contact-center__text">
+        <div class="contact-center__text__content">
+            <div class="contact-center__text__content__title">
+                <Title weight={400} level={2} color="black" size="xxxxl" spacing="3px">{title}</Title>
+            </div>
+            <ul class="contact-center__text__content__list">
+                {
+                    list.map((li) => (
+                        <li>
+                            <Text color="black" set:html={li} size="xl"></Text>
+                        </li>
+                    ))
+                }
+            </ul>
+            <Anchor href={cta.href} color="black" size="xl" variant="bordered">
+                {cta.label}
+            </Anchor>
+        </div>
+    </div>
+    <div class="contact-center__child contact-center__img">
+        <Image src={ContactCenterImg} alt={"Contact center kimobill"}/>
+    </div>
+</section>
+
+<style>
+    .contact-center{
+        background-color: var(--color-white);
+        padding: 100px 20px;
+        width: 100vw;
+        display: flex;
+    }
+    .contact-center__child{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+    .contact-center__text{
+        border-right: 2px solid rgb(0, 0, 0);
+    }
+    .contact-center__img img{
+        height: 100%;
+        width: 100%;
+        max-width: 580px;
+        border-radius: 20px;
+        object-fit: contain;
+    }
+    .contact-center__text{
+        gap: 20px;
+        padding: 30px 40px;
+    }
+    .contact-center__text__content{
+        display: flex;
+        flex-direction: column;
+        max-width: 450px;
+        gap: 20px;
+    }
+    .contact-center__text__content__title{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    .contact-center__text__content__title img{
+        width: 100%;
+        max-width: 170px;
+        object-fit: contain;
+    }
+    .contact-center__text__content__list {
+        max-width: 500px;
+        list-style-type: disc;
+        color: rgb(0, 0, 0);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-center__text__content__list li {
+        margin-bottom: 0.5rem;
+    }
+    @media (max-width:870px) {
+        .contact-center{
+            flex-direction: column;
+        }
+        .contact-center__text{
+            border-right: none;
+        }
+    }
+</style>

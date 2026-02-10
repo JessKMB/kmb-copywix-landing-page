@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import Anchor from "../../atoms/anchor/Anchor.astro";
+import Text from "../../atoms/text/Text.astro";
+import Title from "../../atoms/title/Title.astro";
+import type { BotonQrText } from "../../pages/home/Home.text"
+import DeunaLogo from "../../../assets/boton-qr/deuna.png"
+import Phone from "../../../assets/boton-qr/phone.png"
+interface Props{
+    text:BotonQrText
+}
+
+const {text} = Astro.props
+const {title, list, cta} = text
+
+---
+
+<section class="boton-qr" id="BotonQr">
+    
+    <div class="boton-qr__child boton-qr__video">
+        <Image src={Phone} alt={"App kimobill"}/>
+    </div>
+
+    <div class="boton-qr__child boton-qr__text">
+        <div class="boton-qr__text__content">
+            <div class="boton-qr__text__content__title">
+                <Title weight={400} level={2} color="white" size="xxxxl" spacing="3px">{title}</Title>
+                <Image src={DeunaLogo} alt={"Logo de Deuna"}/>
+            </div>
+            <ul class="boton-qr__text__content__list">
+                {
+                    list.map((li) => (
+                        <li>
+                            <Text color="white" set:html={li} size="xl"></Text>
+                        </li>
+                    ))
+                }
+            </ul>
+            <Anchor href={cta.href} color="white" size="xl" variant="bordered">
+                {cta.label}
+            </Anchor>
+        </div>
+    </div>
+</section>
+
+<style>
+    .boton-qr{
+        padding: 100px 20px;
+        width: 100vw;
+        display: flex;
+        background-color: var(--color-black);
+    }
+    .boton-qr__child{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .boton-qr__video{
+        border-right: 2px solid white;
+    }
+    
+    .boton-qr__video img{
+        height: 100%;
+        width: 100%;
+        max-height: 600px;
+        object-fit: contain;
+    }
+    .boton-qr__text{
+        gap: 20px;
+        padding: 30px 40px;
+    }
+    .boton-qr__text__content{
+        display: flex;
+        flex-direction: column;
+        max-width: 450px;
+        gap: 30px;
+    }
+    .boton-qr__text__content__title{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
+    .boton-qr__text__content__title img{
+        width: 100%;
+        max-width: 170px;
+        object-fit: contain;
+    }
+    .boton-qr__text__content__list {
+        max-width: 500px;
+        list-style-type: disc;
+        color: white;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .boton-qr__text__content__list li {
+        margin-bottom: 0.5rem;
+    }
+    @media (max-width:870px) {
+        .boton-qr{
+            flex-direction: column;
+            border-bottom: 2px solid white;
+        }
+        .boton-qr__video{
+            border-right: none;
+        }
+    }
+</style>

@@ -1,0 +1,25 @@
+---
+import Anchor from "../anchor/Anchor.astro"
+import type { Sizes } from "../../../utils/interfaces/text-size.interfaces"
+import type { Colors } from "../../../utils/interfaces/text-color.interfaces"
+
+interface Props{
+    color?:Colors;
+    size?:Sizes
+}
+const {color = "white", size = "xxxl"} = Astro.props
+---
+
+<div class="logo">
+    <Anchor color={color} href="/" size={size} blank={false}>
+        KIMOBILL
+    </Anchor>
+</div>
+
+<style>
+    .logo{
+        a{
+            letter-spacing: 2px;
+        }
+    }
+</style>

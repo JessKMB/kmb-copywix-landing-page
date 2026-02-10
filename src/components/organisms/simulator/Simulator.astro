@@ -1,0 +1,12 @@
+---
+import Layout from '../layout/Layout.astro';
+import {Button} from '@heroui/react';
+import '../../../styles/global.css';
+---
+<Layout>
+    <section class="bg-black w-screen h-screen">
+        <Button client:load color="primary">
+            Hola desde HeroUI en Tailwind 4
+        </Button>
+    </section>
+</Layout>

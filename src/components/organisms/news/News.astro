@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+import VideoBackground from '../../../assets/news/background.mp4'
+import Anchor from '../../atoms/anchor/Anchor.astro';
+import Text from '../../atoms/text/Text.astro';
+import Title from '../../atoms/title/Title.astro';
+import type { NewsText } from '../../pages/home/Home.text';
+
+interface Props {
+  text: NewsText;
+}
+
+const { text } = Astro.props;
+---
+
+<section class="news">
+    <video id="background-video" loop autoplay muted playsinline class="news__background">
+        <source src={VideoBackground} type="video/mp4" />
+        <p>Tu navegador no soporta videos.</p>
+    </video>
+    <div class="news__content">
+            {
+            text.news.map((item) => {
+                const { title, content, img, href, date, hrefLabel} = item;
+                return (
+                <div class="new-container">
+                    <div class="new">
+                            <Title color='white' size='xl' level={2}>{title}</Title>
+                        <div class="new__content">
+                            <Text color='white' size='xxxl'>{content}</Text>
+                        </div>
+                        <a href={href}>
+                            <Image
+                                src={img}
+                                alt={title}
+                                class="news__image"
+                            />
+                        </a>
+                        <Anchor variant='bordered' size='xl' color='white' href={href}>{hrefLabel}</Anchor>
+                    </div>
+                </div>
+                );
+            })
+            }
+    </div>
+</section>
+
+<style>
+.news {
+    padding: 100px 0px;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.356);
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.news__image{
+    min-width: 0px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 250px;
+    border-radius: 10px;
+    border: 2px solid var(--color-white);  
+    object-fit: cover;
+}
+
+.news__content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+}
+
+.new-container {
+    padding: 50px 0px;
+    flex: 1 1 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.new {
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.new__content{
+    display: flex;
+    align-items: center;
+    height: 130px;
+}
+</style>

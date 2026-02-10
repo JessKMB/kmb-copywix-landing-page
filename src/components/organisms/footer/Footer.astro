@@ -1,0 +1,52 @@
+---
+import Logo from "../../atoms/logo/Logo.astro";
+import {navItems} from "../../../config/site"
+import Anchor from "../../atoms/anchor/Anchor.astro";
+---
+
+<footer class="footer">
+    <Logo color="black"/>
+    <nav class="footer__nav">
+        {
+            navItems.map(({label, href}) => (
+                <Anchor color="black" href={`#${href}`} size="xl" blank={false}>
+                    {label}
+                </Anchor>
+            ))
+        }
+    </nav>
+    <Anchor
+        href="https://wa.me/+593984897877" 
+        variant="solid" 
+        color="black" 
+        size="xl">
+        Contáctanos
+    </Anchor>
+</footer>
+
+<style>
+    .footer{
+        background-color: var(--color-white);
+        width: 100vw;
+        padding: 40px 0px;
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+    }
+    .footer__nav{
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+
+    @media (max-width: 862px) {
+        .footer {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer__nav {
+            display: none;
+        }
+    }
+</style>

@@ -1,0 +1,65 @@
+---
+import type { Sizes } from "../../../utils/interfaces/text-size.interfaces"
+import type { Colors } from "../../../utils/interfaces/text-color.interfaces"
+interface Props {
+    color: Colors;
+    href: string;
+    size?: Sizes;    
+    variant?: "default" | "bordered" | "solid";
+    className?: string
+    blank?:boolean
+}
+const { color, href, size = 'md', variant = "default", className = '', blank = true } = Astro.props;
+---
+<a
+    class={`anchor ${color} ${size} ${variant} ${className}`}
+    href={href}
+    target={blank ? "_blank" : undefined}
+    rel={blank ? "noopener noreferrer" : undefined}
+>
+    <slot />
+</a>
+
+<style>
+    .anchor {
+        width: max-content;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+    }
+    .default {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+    .bordered.white {
+        border: 1px solid var(--color-white);
+        color: var(--color-white);
+        transition: background-color 0.3s ease;
+    }
+    .bordered.black {
+        border: 1px solid var(--color-black);
+        color: var(--color-black);
+        transition: background-color 0.3s ease;
+    }
+    .solid.white {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border: none;
+    }
+    .solid.black {
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border: none;
+    }
+    
+    .bordered.white:hover {
+        background-color: rgba(255, 255, 255, 0.253);
+    }
+    
+    .bordered.black:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+</style>

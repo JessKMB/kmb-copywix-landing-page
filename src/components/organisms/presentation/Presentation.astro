@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import PresentationLetters from "../../../assets/presentation/presentation-letters.png"
+---
+
+<section class="presentation">
+    <Image class='presentation__img' src={PresentationLetters} alt={"Logo de kimobill con su nombre"}/>
+</section>
+
+<style>
+    .presentation{
+        padding: 0px 30px;
+        box-shadow: inset 0px -100px 100px 40px black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+        background-image: url("../../../assets/presentation/presentation-background.webp");
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .presentation__img{
+        width: 100%;
+        max-width: 1000px;
+        height: auto;
+        object-fit: cover;
+    }
+</style>
