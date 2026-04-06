@@ -11,6 +11,22 @@ export interface  Content{
     content: string[];
 }
 
+export interface ServicioMasivo {
+    title: string;
+    price: string;
+    description?: string;
+    features: string[];
+    cta: {
+        label: string;
+        href: string;
+    };
+}
+
+export interface ServiciosMasivosText {
+    title: string;
+    items: ServicioMasivo[];
+}
+
 export interface ContactText {
     title: string;
     address: Content
@@ -40,6 +56,49 @@ export const BOTON_QR_TEXT:BotonQrText = {
         "Esto permitirá incrementar el uso de los <strong>canales digitales</strong> de la institución financiera"
     ],
     cta: { label: "Contáctanos", href:"https://wa.me/+593984897877"}
+}
+
+export const SERVICIOS_MASIVOS_TEXT: ServiciosMasivosText = {
+    title: "SERVICIO MASIVOS",
+    items: [
+        {
+            title: "Masivos por WhatsApp",
+            price: "",
+            description: "",
+            features: [
+                "Servicio 24/7 Omnicanal Atención ininterrumpida para trámites, emergencias y consultas.",
+                "Número WhatsApp Verificado, certificación Meta con nuestro acompañamiento completo.",
+                "Trazabilidad Total - Seguimiento de cada caso con métricas en tiempo real",
+                "Monitoreo de comportamiento y personalización del servicio.",
+                "Continuidad Operativa Garantizada Respuesta inmediata + integración con campañas."
+            ],
+            cta: { label: "Estoy interesado", href: "https://wa.me/593998021293" }
+        },
+        {
+            title: "Masivos por SMS",
+            price: "$0 costo implementación",
+            features: [
+                "24/7 con entrega INMEDIATA",
+                "98% tasa de lectura",
+                "DIRECTO con operadoras",
+                "Ideal para campañas URGENTES",
+                "Precio ESCALABLE por volumen"
+            ],
+            cta: { label: "Estoy interesado", href: "https://wa.me/593998021293" }
+        },
+        {
+            title: "Masivos por Mailing",
+            price: "$0 costo implementación",
+            features: [
+                "99% entregabilidad 24/7",
+                "Base LIMPIA automáticamente",
+                "0 rebotes garantizados",
+                "Escala según TU volumen",
+                "Implementación RÁPIDA"
+            ],
+            cta: { label: "Estoy interesado", href: "https://wa.me/593998021293" }
+        }
+    ]
 }
 
 export const CONTACT_CENTER_TEXT: BotonQrText = {

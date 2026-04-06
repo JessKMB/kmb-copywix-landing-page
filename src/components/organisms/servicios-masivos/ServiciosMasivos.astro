@@ -1,0 +1,246 @@
+---
+import type { ServiciosMasivosText } from "../../pages/home/Home.text"
+import Anchor from "../../atoms/anchor/Anchor.astro";
+import Title from "../../atoms/title/Title.astro";
+import Text from "../../atoms/text/Text.astro";
+
+interface Props {
+    text: ServiciosMasivosText
+}
+
+const { text } = Astro.props
+---
+
+<section class="servicios-masivos" id="ServiciosMasivos">
+    <div class="container">
+        <div class="servicios-masivos__header">
+            <Title level={2} color="primary" size="xxxxl" weight={700} spacing="2px">
+                {text.title}
+            </Title>
+        </div>
+
+        <div class="servicios-masivos__cards">
+            {
+                text.items.map((item, index) => (
+                    <div class={`card card--${index}`}>
+                        <div class="card__header">
+                            <h3 class="card__title">{item.title}</h3>
+                        </div>
+                        <div class="card__content">
+                            {item.price && (
+                                <div class="card__price-section">
+                                    <span class="card__price">{item.price.split(' ')[0]}</span>
+                                    <span class="card__price-label">{item.price.split(' ').slice(1).join(' ')}</span>
+                                </div>
+                            )}
+                            
+                            {item.description && (
+                                <p class="card__description">{item.description}</p>
+                            )}
+
+                            <ul class="card__features">
+                                {item.features.map((feature) => (
+                                    <li class="card__feature">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            
+                            <div class="card__footer">
+                                <Anchor href={item.cta.href} color="white" size="lg" className="cta-button">
+                                    {item.cta.label}
+                                </Anchor>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .servicios-masivos {
+        padding: 100px 20px;
+        background-color: var(--color-black);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .servicios-masivos__header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    :global(.servicios-masivos__header .title) {
+        color: #38bdf8 !important; /* Sky blue for the main title */
+        text-transform: uppercase;
+    }
+
+    .servicios-masivos__cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 360px;
+        background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .card__header {
+        padding: 25px 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Column colors from image */
+    .card--0 .card__header {
+        background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%); /* WhatsApp Blue */
+    }
+    .card--1 .card__header {
+        background: linear-gradient(90deg, #0d9488 0%, #2dd4bf 100%); /* SMS Cyan */
+    }
+    .card--2 .card__header {
+        background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%); /* Mailing Light Blue */
+    }
+
+    .card__title {
+        color: #020617; /* Dark color for the header titles as requested */
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .card__content {
+        padding: 40px 30px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card__price-section {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .card__price {
+        display: block;
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    /* Price colors from image */
+    .card--1 .card__price {
+        color: #2dd4bf; /* Mint/Cyan for SMS */
+    }
+    .card--2 .card__price {
+        color: #3b82f6; /* Blue for Mailing specifically */
+    }
+
+    .card__price-label {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    .card__description {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 30px;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+
+    .card__features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 40px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .card__feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    .check-icon {
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .card__footer {
+        margin-top: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Using a custom button style to match the image precisely */
+    :global(.cta-button) {
+        background: #3b82f6 !important;
+        color: white !important;
+        border-radius: 12px !important;
+        padding: 12px 30px !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        width: 100% !important;
+        text-align: center !important;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        transition: background 0.3s ease, transform 0.2s ease !important;
+    }
+
+    :global(.cta-button:hover) {
+        background: #2563eb !important;
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 900px) {
+        .servicios-masivos__cards {
+            flex-direction: column;
+            align-items: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 450px;
+        }
+    }
+</style>
