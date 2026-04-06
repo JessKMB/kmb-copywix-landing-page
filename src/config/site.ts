@@ -1,7 +1,7 @@
 export const navItems = [
     {
-        label:"Botón QR",
-        href:"BotonQr"
+        label:"Servicios Masivos",
+        href:"ServiciosMasivos"
     },
     {
         label:"Contact Center",

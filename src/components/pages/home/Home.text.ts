@@ -47,16 +47,6 @@ export interface NewsText {
 }
 
 
-export const BOTON_QR_TEXT:BotonQrText = {
-    title: "BOTÓN QR",
-    list: [
-        "<strong>Kimobill y Deuna</strong> tienen una alianza para facilitar la inclusión financiera del Ecuador",
-        "Los clientes de cualquier institución financiera podrán pagar con QR en <strong>más de 500 mil comercios</strong> de Deuna",
-        "El QR de Deuna podrá habilitarse en el <strong>aplicativo móvil</strong> de la institución financiera",
-        "Esto permitirá incrementar el uso de los <strong>canales digitales</strong> de la institución financiera"
-    ],
-    cta: { label: "Contáctanos", href:"https://wa.me/+593984897877"}
-}
 
 export const SERVICIOS_MASIVOS_TEXT: ServiciosMasivosText = {
     title: "SERVICIO MASIVOS",
