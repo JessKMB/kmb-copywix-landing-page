@@ -1,6 +1,6 @@
 export const navItems = [
     {
-        label:"Servicios Masivos",
+        label:"Servicio Masivos",
         href:"ServiciosMasivos"
     },
     {
