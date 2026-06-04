@@ -116,7 +116,7 @@ export const CONTACT_TEXT: ContactText = {
     },
     email: {
         title: "Email",
-        content: ['info@kimobill.com']
+        content: ['sales@kimobill.com']
     }
 };
 
