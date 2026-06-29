@@ -8,6 +8,10 @@ export const navItems = [
         href:"ContactCenter"
     },
     {
+        label:"Trabaja con nosotros",
+        href:"TrabajaConNosotros"
+    },
+    {
         label:"Clientes",
         href:"Clientes"
     },

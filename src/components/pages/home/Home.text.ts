@@ -34,6 +34,18 @@ export interface ContactText {
     email: Content
 }
 
+export interface WorkWithUsText {
+    eyebrow: string;
+    title: string;
+    description: string;
+    role: string;
+    list: string[];
+    cta: {
+        label: string;
+        href: string;
+    };
+}
+
 export interface New {
     title: string;
     content: string;
@@ -103,6 +115,22 @@ export const CONTACT_CENTER_TEXT: BotonQrText = {
 }
 
 
+
+export const WORK_WITH_US_TEXT: WorkWithUsText = {
+    eyebrow: "TRABAJA CON NOSOTROS",
+    title: "Sumate a nuestro equipo",
+    description: "Estamos recibiendo postulaciones para el cargo de Ejecutivo Contact Center. Si quieres crecer con nosotros, completa el formulario y comparte tu perfil.",
+    role: "Ejecutivo Contact Center",
+    list: [
+        "Postulacion 100% en linea",
+        "Proceso rapido y directo",
+        "Formulario disponible para aplicar ahora"
+    ],
+    cta: {
+        label: "Postular ahora",
+        href: "https://l1nk.dev/apyakp9"
+    }
+}
 
 export const CONTACT_TEXT: ContactText = {
     title: "CONTACTO",

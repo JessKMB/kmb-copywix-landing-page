@@ -1,0 +1,189 @@
+---
+import { Image } from "astro:assets";
+import Anchor from "../../atoms/anchor/Anchor.astro";
+import type { WorkWithUsText } from "../../pages/home/Home.text";
+import WorkWithUsImg from "../../../assets/contact-center/trabaja-con-nosotros.jpg";
+
+interface Props {
+    text: WorkWithUsText;
+}
+
+const { text } = Astro.props;
+const { eyebrow, title, description, role, list, cta } = text;
+---
+
+<section class="work-with-us" id="TrabajaConNosotros">
+    <div class="work-with-us__media">
+        <div class="work-with-us__image-frame">
+            <Image src={WorkWithUsImg} alt="Convocatoria para Ejecutivo Contact Center" />
+        </div>
+    </div>
+
+    <div class="work-with-us__content">
+        <span class="work-with-us__eyebrow">{eyebrow}</span>
+        <h2 class="work-with-us__title">{title}</h2>
+        <p class="work-with-us__role">
+            Vacante abierta: <strong>{role}</strong>
+        </p>
+        <p class="work-with-us__description">{description}</p>
+
+        <ul class="work-with-us__list">
+            {
+                list.map((item) => (
+                    <li>
+                        <p>{item}</p>
+                    </li>
+                ))
+            }
+        </ul>
+
+        <Anchor href={cta.href} color="black" size="xl" variant="bordered" className="work-with-us__cta">
+            {cta.label}
+        </Anchor>
+    </div>
+</section>
+
+<style>
+    .work-with-us {
+        width: 100vw;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 28px;
+        padding: 40px 40px 90px;
+        background: var(--color-white);
+    }
+
+    .work-with-us__media,
+    .work-with-us__content {
+        flex: 1 1 0;
+        display: flex;
+    }
+
+    .work-with-us__media {
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .work-with-us__image-frame {
+        width: min(100%, 560px);
+    }
+
+    .work-with-us__image-frame img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 18px;
+    }
+
+    .work-with-us__content {
+        max-width: 680px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 18px;
+        padding-left: 0;
+        margin-left: -8px;
+    }
+
+    .work-with-us__eyebrow {
+        display: block;
+        width: 100%;
+        margin: 0;
+        font-size: var(--text-5xl);
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: 3px;
+        color: #184b90;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .work-with-us__title {
+        margin: 0;
+        width: 100%;
+        font-size: clamp(1.2rem, 1.6vw, 1.7rem);
+        font-weight: 400;
+        line-height: 1.3;
+        letter-spacing: 0.04em;
+        color: var(--color-black);
+        white-space: nowrap;
+    }
+
+    .work-with-us__role {
+        margin: 0;
+        font-size: var(--text-xl);
+        line-height: 1.6;
+        color: var(--color-black);
+    }
+
+    .work-with-us__role strong {
+        color: var(--color-black);
+        font-weight: 700;
+    }
+
+    .work-with-us__description {
+        margin: 0;
+        max-width: 52ch;
+        font-size: var(--text-xl);
+        line-height: 1.6;
+        color: var(--color-black);
+    }
+
+    .work-with-us__list {
+        width: 100%;
+        max-width: 54ch;
+        padding-left: 24px;
+        list-style-type: disc;
+        list-style-position: outside;
+        color: var(--color-black);
+    }
+
+    .work-with-us__list li {
+        margin-bottom: 12px;
+    }
+
+    .work-with-us__list li p {
+        margin: 0;
+        font-size: var(--text-xl);
+        line-height: 1.6;
+        color: var(--color-black);
+    }
+
+    .work-with-us__cta {
+        margin-top: 6px;
+        padding: 14px 28px;
+        border-radius: 12px;
+        color: var(--color-black);
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1.5px solid #184b90;
+        box-shadow: 0 12px 30px rgba(24, 75, 144, 0.14);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .work-with-us__cta:hover {
+        transform: translateY(-3px) scale(1.03);
+        background-color: rgba(24, 75, 144, 0.08);
+        box-shadow: 0 16px 34px rgba(24, 75, 144, 0.2);
+    }
+
+    @media (max-width: 900px) {
+        .work-with-us {
+            flex-direction: column;
+            padding: 48px 24px 80px;
+            gap: 36px;
+        }
+
+        .work-with-us__content {
+            max-width: 100%;
+            margin-left: 0;
+        }
+
+        .work-with-us__title,
+        .work-with-us__eyebrow {
+            white-space: normal;
+        }
+    }
+</style>
