@@ -128,7 +128,7 @@ export const WORK_WITH_US_TEXT: WorkWithUsText = {
     ],
     cta: {
         label: "Postular ahora",
-        href: "https://l1nk.dev/apyakp9"
+        href: "https://docs.google.com/forms/d/e/1FAIpQLSf5tQ2-ElaIddHpGAPHcX5ekJwuOOr9XhRPbeObpICmDOnTZg/viewform"
     }
 }
 
